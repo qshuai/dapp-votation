@@ -68,7 +68,6 @@ App = {
             result.empty();
 
             var list = $("#votingList");
-            list.empty();
 
             for (var i = 1; i <= count; i++) {
                 votationInstance.candidates(i).then(function (candidate) {
@@ -79,7 +78,7 @@ App = {
                     var candidateTemplate = '<tr><th scope="row">'+ id +'</th><td>'+name+'</td><td>'+votes+'</td></tr>';
                     result.append(candidateTemplate);
 
-                    var optionTemplate = '<option selected>'+ '['+id+'] ' +name + '</option>';
+                    var optionTemplate = '<option value='+ id + '>'+ '['+id+'] ' +name + '</option>';
                     list.append(optionTemplate);
                 })
             }
