@@ -101,6 +101,7 @@ $(document).ready(function () {
     App.init();
 
     $("#add").click(function () {
+        // TODO(qshuai) not repeated name
         var name = $("#voteName").val();
         if (name === "") {
             console.log("the name for candidate should not be empty!");

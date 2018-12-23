@@ -12,8 +12,6 @@ contract Votation {
 
     constructor() public {
         owner = msg.sender;
-        addCandidate("Andy");
-        addCandidate("Jack");
     }
 
     modifier onlyOwner {
