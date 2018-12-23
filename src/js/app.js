@@ -115,5 +115,22 @@ $(document).ready(function () {
         }).catch(function (err) {
             console.error(err);
         })
+    });
+
+    $("#vote").click(function () {
+        var id = $("#votingList").val();
+        if (id === '0') {
+            console.log("Please select a candidate!");
+            return
+        }
+
+        App.ins.Votation.deployed().then(function (instance) {
+            return instance.vote(id, { from: App.account });
+        }).then(function (result) {
+            // $("#loader").hide();
+            // $("#content").show();
+        }).catch(function (err) {
+            console.error(err);
+        })
     })
 });
