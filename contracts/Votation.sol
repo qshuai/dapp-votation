@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.24;
 
 contract Votation {
     struct Candidate {
@@ -7,11 +7,13 @@ contract Votation {
         uint count;
     }
 
-    uint candidateCount;
-    address owner;
+    uint public candidateCount;
+    address public owner;
 
     constructor() public {
         owner = msg.sender;
+        addCandidate("Andy");
+        addCandidate("Jack");
     }
 
     modifier onlyOwner {
@@ -24,14 +26,14 @@ contract Votation {
         _;
     }
 
-    mapping(uint => Candidate) candidates;
+    mapping(uint => Candidate) public candidates;
     function addCandidate(string memory name) onlyOwner public {
         candidateCount++;
         candidates[candidateCount] = Candidate(candidateCount, name, 0);
     }
 
     // record whether a account has voted or not.
-    mapping(address => bool) hasVoted;
+    mapping(address => bool) public hasVoted;
     function vote(uint id) notOwner public {
         require(!hasVoted[msg.sender]);
 
